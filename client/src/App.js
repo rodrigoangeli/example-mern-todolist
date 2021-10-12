@@ -7,7 +7,7 @@ function App() {
 
   useEffect(() => {
     axios
-      .get("http://localhost:4000/item")
+      .get("http://localhost:3080/item")
       .then(({ data }) => setItems(data))
       .catch(function (error) {
         console.log(error);
@@ -16,7 +16,7 @@ function App() {
 
   const addItem = () => {
     axios
-      .post("http://localhost:4000/item", {
+      .post("http://localhost:3080/item", {
         text: inputText,
       })
       .then(({ data }) => {
@@ -30,7 +30,7 @@ function App() {
 
   const removeItem = (id) => {
     axios
-      .delete(`http://localhost:4000/item/${id}`)
+      .delete(`http://localhost:3080/item/${id}`)
       .then((data) => {
         let newList = [...items];
         setItems(newList.filter((e) => e._id !== id));
