@@ -24,13 +24,13 @@ const TodoItem = mongoose.model(
   })
 );
 
-app.get("/item", (req, res) => {
+app.get("/api/item", (req, res) => {
   TodoItem.find({}, (err, list) => {
     res.send(list);
   });
 });
 
-app.post("/item", (req, res) => {
+app.post("/api/item", (req, res) => {
   let text = req.body.text;
   if (text === "") return res.status(400).json({ message: "Empty field" });
   const newItem = new TodoItem({ text });
@@ -43,7 +43,7 @@ app.post("/item", (req, res) => {
   });
 });
 
-app.delete("/item/:id", (req, res) => {
+app.delete("/api/item/:id", (req, res) => {
   TodoItem.findOneAndRemove({ _id: req.params.id }, (err) => {
     if (err) res.status(400).send(err);
     res.status(200).send();

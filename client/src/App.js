@@ -7,7 +7,7 @@ function App() {
 
   useEffect(() => {
     axios
-      .get("/item")
+      .get("/api/item")
       .then(({ data }) => setItems(data))
       .catch(function (error) {
         console.log(error);
@@ -16,7 +16,7 @@ function App() {
 
   const addItem = () => {
     axios
-      .post("/item", {
+      .post("/api/item", {
         text: inputText,
       })
       .then(({ data }) => {
@@ -30,7 +30,7 @@ function App() {
 
   const removeItem = (id) => {
     axios
-      .delete(`/item/${id}`)
+      .delete(`/api/item/${id}`)
       .then((data) => {
         let newList = [...items];
         setItems(newList.filter((e) => e._id !== id));
