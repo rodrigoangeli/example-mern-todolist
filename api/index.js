@@ -4,7 +4,7 @@ const express = require("express"),
   cors = require("cors"),
   mongoose = require("mongoose"),
   Todo = require("./routes/Todo");
-port = 4000;
+port = 3080;
 
 const urlencodedParser = bodyParser.urlencoded({ extended: false });
 app.use(bodyParser.json(), urlencodedParser);
