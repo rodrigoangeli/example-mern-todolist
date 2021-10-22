@@ -7,7 +7,7 @@ function App() {
 
   useEffect(() => {
     axios
-      .get("/api/item")
+      .get("/api/todo")
       .then(({ data }) => setItems(data))
       .catch(function (error) {
         console.log(error);
@@ -16,11 +16,11 @@ function App() {
 
   const addItem = () => {
     axios
-      .post("/api/item", {
+      .post("/api/todo", {
         text: inputText,
       })
       .then(({ data }) => {
-        setItems([...items, data.newItem]);
+        setItems([...items, data.newTodo]);
         setInputText("");
       })
       .catch(function (error) {
@@ -30,7 +30,7 @@ function App() {
 
   const removeItem = (id) => {
     axios
-      .delete(`/api/item/${id}`)
+      .delete(`/api/todo/${id}`)
       .then((data) => {
         let newList = [...items];
         setItems(newList.filter((e) => e._id !== id));
